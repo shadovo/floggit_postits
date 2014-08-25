@@ -7,12 +7,16 @@
  * # fpCategory
  */
 angular.module('floggitPostitsApp')
-  .directive('fpCategory', function () {
-    return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the fpCategory directive');
-      }
-    };
-  });
+	.directive('fpCategory', function () {
+		return {
+			templateUrl: 'views/category.html',
+			restrict: 'E',
+			scope: {
+				category: '='
+			},
+			controller: function ($scope) {
+				$scope.categoryName = category.name;
+				$scope.postits = category.postits;
+			}
+		};
+	});
