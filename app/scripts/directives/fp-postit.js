@@ -7,13 +7,12 @@
  * # postit
  */
 angular.module('floggitPostitsApp')
-	.directive('postit', function () {
-		return {
-			templateUrl: 'views/postit.html',
-			restrict: 'E',
-			scope: {
-				postit: '='
-			}
-
-		};
-	});
+  .directive('fpPostit', function () {
+    return {
+      templateUrl: 'views/postit.html',
+      restrict: 'E',
+      scope: {
+        postit: '='
+      }
+    };
+  });

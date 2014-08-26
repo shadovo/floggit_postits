@@ -145,7 +145,3 @@ angular.module('floggitPostitsApp')
       getAll: getAll
     };
   });
-
-// http://localhost:14782/fp-testwhiteboard-categories GET, POST
-// http://localhost:14782/fp-testwhiteboard-categories/"id" GET, PUT, DELETE
-// http://localhost:14782/fp-testwhiteboard-postits GET, POST
