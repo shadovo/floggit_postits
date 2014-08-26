@@ -1,5 +1,4 @@
 <h2> {{ category.name }} </h2>
-	
-<div class="category" name="category.name" ng-repeat="postit in category.postits track by $index">
-	<fp-postit name="postit"></fp-postit>	
+<div ng-repeat="postit in category.postits track by $index">
+	<fp-postit postit="postit"></fp-postit>
 </div>
