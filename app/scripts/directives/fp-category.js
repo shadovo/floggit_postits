@@ -13,10 +13,6 @@ angular.module('floggitPostitsApp')
 			restrict: 'E',
 			scope: {
 				category: '='
-			},
-			controller: function ($scope) {
-				$scope.categoryName = category.name;
-				$scope.postits = category.postits;
 			}
 		};
 	});

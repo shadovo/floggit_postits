@@ -1,5 +1,5 @@
-<h2> {{ categoryName }} </h2>
+<h2> {{ category.name }} </h2>
 	
-<div class="category" name="categoryName" ng-repeat="postit in postits track by $index">
+<div class="category" name="category.name" ng-repeat="postit in category.postits track by $index">
 	<fp-postit name="postit"></fp-postit>	
 </div>

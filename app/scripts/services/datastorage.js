@@ -8,15 +8,15 @@
  * Factory in the floggitPostitsApp.
  */
 angular.module('floggitPostitsApp')
-  .factory('dataStorage', function ($http) {
+	.factory('dataStorage', function ($http) {
 
-    var url = 'http://localhost:14782/floggit-postit';
+		var url = 'http://localhost:14782/';
 
 
 
-    return {
-      getUrl: function () {
-        return url;
-      }
-    };
-  });
+		return {
+			getUrl: function () {
+				return url;
+			}
+		};
+	});
