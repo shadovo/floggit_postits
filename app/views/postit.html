@@ -1,7 +1,7 @@
 <div>
-  <h4>{{ postit.title }}</h4>
+  <input ng-model="postit.title" ng-blur="updatePost()"/>
   <br>
-  {{ postit.description }}
+  <input ng-model="postit.description" ng-blur="updatePost()"/>
   <br>
   <br>
   <p>

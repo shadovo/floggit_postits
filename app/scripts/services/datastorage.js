@@ -140,6 +140,10 @@ angular.module('floggitPostitsApp')
       getUrl: function () {
         return baseUrl;
       },
+      updatePostit: function (whiteboard, postit) {
+        console.log(whiteboard);
+        console.log(postit);
+      },
       getAllCategoriesFor: getAllCategoriesFor,
       getAllPostitsFor: getAllPostitsFor,
       getAll: getAll
