@@ -148,6 +148,10 @@ angular.module('floggitPostitsApp')
         console.log(whiteboard);
         console.log(postit);
       },
+      deletePostit: function (whiteboard, postit) {
+        console.log(whiteboard);
+        console.log(postit);
+      },
       getAllCategoriesFor: getAllCategoriesFor,
       getAllPostitsFor: getAllPostitsFor,
       getAll: getAll

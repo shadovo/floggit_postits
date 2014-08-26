@@ -24,6 +24,13 @@ angular.module('floggitPostitsApp')
             description = $scope.postit.description;
           }
         };
+        $scope.deletePostit = function () {
+          var answer = confirm('Are you sure that you want to delete this postit?');
+          if (answer === true) {
+            dataStorage.deletePostit('testwhiteboard', $scope.postit);
+          }
+
+        };
       }
     };
   });
