@@ -22,6 +22,12 @@ angular.module('floggitPostitsApp')
 						dataStorage.updatePostit('testwhiteboard', $scope.category);
 					}
 				};
+				$scope.deleteCategory = function () {
+					var answer = confirm('Are you sure about deleting this category?');
+					if (answer === true) {
+						dataStorage.deleteCategory('testwhiteboard', $scope.category.id);
+					}
+				};
 			}
 		};
 	});
