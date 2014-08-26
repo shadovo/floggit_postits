@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc directive
- * @name floggitPostitsApp.directive:fpCategory
+ * @name floggitPostitsApp.directive:fpToolbar
  * @description
- * # fpCategory
+ * # fpToolbar
  */
 angular.module('floggitPostitsApp')
-  .directive('fpCategory', function () {
+  .directive('fpToolbar', function () {
     return {
       template: '<div></div>',
       restrict: 'E',
       link: function postLink(scope, element) {
-        element.text('this is the fpCategory directive');
+        element.text('this is the fpToolbar directive');
       }
     };
   });

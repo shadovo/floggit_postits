@@ -7,10 +7,18 @@
  * # whiteboard
  */
 angular.module('floggitPostitsApp')
-	.directive('whiteboard', function () {
-		return {
-			template: '<div></div>',
-			restrict: 'E'
-
-		};
-	});
+  .directive('fpWhiteboard', function () {
+    return {
+      template: '<div>Hej! {{ categories }}</div>',
+      restrict: 'E',
+      scope: {
+        name: '='
+      },
+      controller: function ($scope, dataStorage) {
+        $scope.url = dataStorage.getUrl();
+        dataStorage.getAllCategoriesFor('testwhiteboard').then(function (data) {
+          $scope.categories = data;
+        });
+      }
+    };
+  });
