@@ -12,15 +12,21 @@ angular.module('floggitPostitsApp')
 
     // var baseUrl = 'http://api.beta2.se/fp-';
     var baseUrl = 'http://localhost:14782/fp-';
-
-    function basicRequest(method, whiteboard, type, data) {
+    // method, whiteboard, type, data, id
+    function basicRequest(options) {
+      /*
+       * options include method, whiteboard, type, id, data
+       */
       var deferred = $q.defer();
-      var url = baseUrl + whiteboard + '-' + type;
+      var url = baseUrl + options.whiteboard + '-' + options.type;
       var requestParams = {};
-      requestParams.method = method;
+      if (options.id !== undefined) {
+        url = url + '/' + options.id;
+      }
+      requestParams.method = options.method;
       requestParams.url = url;
-      if (data !== undefined) {
-        requestParams.data = data;
+      if (options.data !== undefined) {
+        requestParams.data = options.data;
       }
       $http(requestParams).success(function (data) {
         deferred.resolve(data);
@@ -28,12 +34,40 @@ angular.module('floggitPostitsApp')
       return deferred.promise;
     }
 
-    function basicGet(whiteboard, type) {
-      return basicRequest('GET', whiteboard, type);
+    function basicGet(whiteboard, type, id) {
+      return basicRequest({
+        method: 'GET',
+        whiteboard: whiteboard,
+        type: type,
+        id: id
+      });
     }
 
     function basicPost(whiteboard, type, data) {
-      return basicRequest('POST', whiteboard, type, data);
+      return basicRequest({
+        method: 'POST',
+        whiteboard: whiteboard,
+        type: type,
+        data: data
+      });
+    }
+
+    function basicPut(whiteboard, type, data, id) {
+      return basicRequest({
+        method: 'PUT',
+        whiteboard: whiteboard,
+        type: type,
+        data: data,
+        id: id
+      });
+    }
+
+    function basicDelete(whiteboard, type, id) {
+      return basicRequest({
+        method: 'DELETE',
+        type: type,
+        id: id
+      });
     }
 
     function getAllCategoriesFor(whiteboard) {
@@ -42,6 +76,22 @@ angular.module('floggitPostitsApp')
 
     function getAllPostitsFor(whiteboard) {
       return basicGet(whiteboard, 'postits');
+    }
+
+    function updatePostit(whiteboard, postit) {
+      return basicPut(whiteboard, 'postits', postit, postit.id);
+    }
+
+    function updateCategory(whiteboard, category) {
+      return basicPut(whiteboard, 'category', category, category.id);
+    }
+
+    function deletePostit(whiteboard, id) {
+      return basicDelete(whiteboard, 'postits', id);
+    }
+
+    function deleteCategory(whiteboard, id) {
+      return basicDelete(whiteboard, 'categories', id);
     }
 
     function addPostitToCorrespondingCategory(categories, postit) {
@@ -71,7 +121,6 @@ angular.module('floggitPostitsApp')
       });
       return deferred.promise;
     }
-
 
 
     function postDummyData() {
@@ -140,10 +189,10 @@ angular.module('floggitPostitsApp')
       getUrl: function () {
         return baseUrl;
       },
-      updatePostit: function (whiteboard, postit) {
-        console.log(whiteboard);
-        console.log(postit);
-      },
+      updatePostit: updatePostit,
+      updateCategory: updateCategory,
+      deletePostit: deletePostit,
+      deleteCategory: deleteCategory,
       getAllCategoriesFor: getAllCategoriesFor,
       getAllPostitsFor: getAllPostitsFor,
       getAll: getAll
