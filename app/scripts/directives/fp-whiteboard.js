@@ -24,7 +24,7 @@ angular.module('floggitPostitsApp')
         // postitPromise.then(function (data) {
         //   $scope.postits = data;
         // });
-        var allPromise = dataStorage.getAll('testwhiteboard');
+        var allPromise = dataStorage.getAll($scope.name);
         allPromise.then(function (data) {
           $scope.whiteboard = data;
         });
