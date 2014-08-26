@@ -9,10 +9,10 @@
 angular.module('floggitPostitsApp')
   .directive('fpCategory', function () {
     return {
-      template: '<div></div>',
+      templateUrl: 'views/category.html',
       restrict: 'E',
-      link: function postLink(scope, element) {
-        element.text('this is the fpCategory directive');
+      scope: {
+        category: '='
       }
     };
   });
