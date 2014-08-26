@@ -9,15 +9,24 @@
 angular.module('floggitPostitsApp')
   .directive('fpWhiteboard', function () {
     return {
-      template: '<div>Hej! {{ categories }}</div>',
+      template: '<div>Hej! {{ categories }}<br>{{ postits }}<br><br> {{whiteboard}}</div>',
       restrict: 'E',
       scope: {
         name: '='
       },
       controller: function ($scope, dataStorage) {
         $scope.url = dataStorage.getUrl();
-        dataStorage.getAllCategoriesFor('testwhiteboard').then(function (data) {
-          $scope.categories = data;
+        // var categoryPromise = dataStorage.getAllCategoriesFor('testwhiteboard');
+        // categoryPromise.then(function (data) {
+        //   $scope.categories = data;
+        // });
+        // var postitPromise = dataStorage.getAllPostitsFor('testwhiteboard');
+        // postitPromise.then(function (data) {
+        //   $scope.postits = data;
+        // });
+        var allPromise = dataStorage.getAll('testwhiteboard');
+        allPromise.then(function (data) {
+          $scope.whiteboard = data;
         });
       }
     };
