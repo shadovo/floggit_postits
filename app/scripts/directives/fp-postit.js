@@ -9,8 +9,11 @@
 angular.module('floggitPostitsApp')
 	.directive('postit', function () {
 		return {
-			template: '<div></div>',
-			restrict: 'E'
+			templateUrl: 'views/postit.html',
+			restrict: 'E',
+			scope: {
+				postit: '='
+			}
 
 		};
 	});
