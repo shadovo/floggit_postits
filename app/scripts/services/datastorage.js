@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 /**
  * @ngdoc service
@@ -189,7 +189,7 @@ angular.module('floggitPostitsApp')
       getUrl: function () {
         return baseUrl;
       },
-      updatePostit: updatePostit,
+    updatePostit: updatePostit,
       updateCategory: updateCategory,
       deletePostit: deletePostit,
       deleteCategory: deleteCategory,
