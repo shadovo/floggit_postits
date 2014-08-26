@@ -1,17 +1,12 @@
-// URL fp-testwhiteboard-categories
-// id:s genereras till alla automatsiskt pa server
-
-{
+var dummyDataCategories = [{
 	"name": "Todo"
 }, {
 	"name": "In progress"
 }, {
 	"name": "Done"
-}
+}];
 
-// URL fp-testwhiteboard-postits
-
-{
+var dummyDataPostits = [{
 	"title": "Some good deed.",
 	"description": "I am ver good deed that must be done!",
 	"color": "red",
@@ -46,4 +41,4 @@
 	"description": "I anojoijojioj jjj must be done!",
 	"color": "blue",
 	"category": 3
-}
+}]
