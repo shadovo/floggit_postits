@@ -1,6 +1,41 @@
+.frame {
+	display: flex;
+	margin-top: 20px; 
+	background-image: url('../images/whiteboard1.jpg'); 
+	background-size: 100% 100%;
+	min-height: 800px; 
+	padding: 20px; 
+	-webkit-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
+	-moz-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
+	box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
+
+}
+
+.postit {
+	padding: 10px; 
+	-webkit-box-shadow: 3px 1px 12px 3px rgba(0,0,0,1);
+	-moz-box-shadow: 3px 1px 12px 3px rgba(0,0,0,1);
+	box-shadow: 3px 1px 12px 3px rgba(0,0,0,1);
+}
+.category{
+}
+
+input {
+	color: #000000;
+	outline: 0; 
+	height: 28px;
+	padding-left: 10px;
+	border: none; 
+	background-color: transparent; 
+
+}
 fp-whiteboard {
-  display: flex;
+	margin-top: 25px; 
+	display: flex;
+	margin-left: auto;
+	margin-right: auto; 
+	
 }
 fp-whiteboard>div {
-  flex: 1;
+	flex: 1;
 }
