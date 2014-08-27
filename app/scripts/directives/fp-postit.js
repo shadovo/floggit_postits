@@ -17,10 +17,11 @@ angular.module('floggitPostitsApp')
       controller: function ($scope, dataStorage) {
 
         $scope.categories = [];
+        $scope.colors = ['red', 'blue', 'green', 'yellow'];
+
         var promise = dataStorage.getAllCategoriesFor('testwhiteboard');
         promise.then(function (data) {
           $scope.categories = data;
-
           for (var i = 0; i < $scope.categories.length; i++) {
             if ($scope.categories[i].id === $scope.postit.category) {
               $scope.newCategory = $scope.categories[i];
@@ -37,13 +38,28 @@ angular.module('floggitPostitsApp')
         var category = $scope.postit.category;
         var color = $scope.postit.color;
 
+        $scope.newColor = color;
+
+        $scope.$watch('newColor', function () {
+          $scope.updatePostitColor();
+        });
+
+
+        $scope.updatePostitColor = function () {
+          console.log($scope.color);
+          if ($scope.newColor !== undefined && $scope.newColor !== color) {
+            $scope.postit.color = $scope.newColor;
+            dataStorage.updatePostit('testwhiteboard', $scope.postit);
+            color = $scope.postit.color;
+            console.log(color);
+          }
+        };
+
         $scope.updatePostitCategory = function () {
-          console.log($scope.newCategory);
           if ($scope.newCategory !== undefined && $scope.newCategory.id !== category) {
             $scope.postit.category = $scope.newCategory.id;
             dataStorage.updatePostit('testwhiteboard', $scope.postit);
             category = $scope.postit.category;
-            console.log(category);
           }
         };
 
