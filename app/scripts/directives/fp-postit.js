@@ -15,8 +15,38 @@ angular.module('floggitPostitsApp')
         postit: '='
       },
       controller: function ($scope, dataStorage) {
+
+        $scope.categories = [];
+        var promise = dataStorage.getAllCategoriesFor('testwhiteboard');
+        promise.then(function (data) {
+          $scope.categories = data;
+
+          for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].id === $scope.postit.category) {
+              $scope.newCategory = $scope.categories[i];
+            }
+          }
+        });
+
+        $scope.$watch('newCategory', function () {
+          $scope.updatePostitCategory();
+        });
+
         var title = $scope.postit.title;
         var description = $scope.postit.description;
+        var category = $scope.postit.category;
+        var color = $scope.postit.color;
+
+        $scope.updatePostitCategory = function () {
+          console.log($scope.newCategory);
+          if ($scope.newCategory !== undefined && $scope.newCategory.id !== category) {
+            $scope.postit.category = $scope.newCategory.id;
+            dataStorage.updatePostit('testwhiteboard', $scope.postit);
+            category = $scope.postit.category;
+            console.log(category);
+          }
+        };
+
         $scope.updatePost = function () {
           if ($scope.postit.title !== title || $scope.postit.description !== description) {
             dataStorage.updatePostit('testwhiteboard', $scope.postit);
