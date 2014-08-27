@@ -201,7 +201,7 @@
       var dummyData = {};
       dummyData.categories = dummyDataCategories;
       dummyData.postits = dummyDataPostits;
-      // postDummyData();
+      //postDummyData();
 
       return {
         getUrl: function () {

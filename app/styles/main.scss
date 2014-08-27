@@ -8,19 +8,32 @@ body {
 	margin-top: 10px;
 	background-image: url('../images/whiteboard1.jpg');
 	background-size: 100% 100%;
-	min-height: 800px;
+	min-height: 850px;
 	padding: 20px;
 	-webkit-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
 	-moz-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
 	box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
-
+}
+.menu {
+	opacity:0;
+	display: inline-block;
+	background-color: transparent;
 }
 
+fp-postit:hover .menu{
+	opacity: 1;
+}
+
+.glyphicon{
+	display: inline-block;
+}
 .postit {
 	padding: 10px;
+	padding-top: 0px;
 	margin-bottom: 15px;
 	background-color: #FFFE78;
 
+	/* With help from: http://mentormate.com/blog/css-postit-note/*/
 	font-size:18px;
 	border:1px solid #E8E8E8;
 	border-bottom-right-radius: 60px 5px;
@@ -35,19 +48,18 @@ body {
 	-webkit-box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
 	box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
-
 }
+
 .postit-title{
 	font-size: 25px;
-	text-align: center;
 	font-family:"Gloria Hallelujah", Arial, Helvetica, sans-serif;
 }
 
 .category{
-	margin-top: 0px;
+	padding: 20px;
+	padding-top: 0px;
 	font-family:"Gloria Hallelujah", Arial, Helvetica, sans-serif;
 	font-size: 30px;
-	padding: 20px;
 }
 
 input {
@@ -73,19 +85,20 @@ fp-whiteboard {
 	margin-left: auto;
 	margin-right: 320px;
 }
+
 fp-whiteboard>div {
 	flex: 1;
 }
 .toolbar {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  height: 400px;
-  width: 320px;
-  z-index: 0;
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	height: 400px;
+	width: 320px;
+	z-index: 0;
 }
 .hints {
-  width: 100%;
+	width: 100%;
 }
 .tools-img {
   width: 190px;
@@ -94,20 +107,20 @@ fp-whiteboard>div {
   left: 71px;
 }
 .postit-click-area {
-  position: absolute;
-  left: 70px;
-  height: 300px;
-  width: 150px;
-  top:80px;
-  display: block;
-  /*background: red;*/
+	position: absolute;
+	left: 70px;
+	height: 300px;
+	width: 150px;
+	top:80px;
+	display: block;
+	/*background: red;*/
 }
 .category-click-area {
-  position: absolute;
-  left: 220px;
-  top: 80px;
-  height: 300px;
-  width: 60px;
-  /*background: blue;*/
-  display: block;
+	position: absolute;
+	left: 220px;
+	top: 80px;
+	height: 300px;
+	width: 60px;
+	/*background: blue;*/
+	display: block;
 }
