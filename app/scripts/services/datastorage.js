@@ -19,6 +19,7 @@
          */
         var deferred = $q.defer();
         var url = baseUrl + options.whiteboard + '-' + options.type;
+
         var requestParams = {};
         if (options.id !== undefined) {
           url = url + '/' + options.id;
@@ -28,6 +29,7 @@
         if (options.data !== undefined) {
           requestParams.data = options.data;
         }
+        console.log(options.method + ' ' + url);
         $http(requestParams).success(function (data) {
           deferred.resolve(data);
         });
@@ -65,9 +67,21 @@
       function basicDelete(whiteboard, type, id) {
         return basicRequest({
           method: 'DELETE',
+          whiteboard: whiteboard,
           type: type,
           id: id
         });
+      }
+
+      function createPostit(whiteboard, postit) {
+        return basicPost(whiteboard, 'postits', postit);
+      }
+
+      function createCategory(whiteboard, category) {
+        if (category.name === undefined || category.name === '') {
+          category.name = 'New Category';
+        }
+        return basicPost(whiteboard, 'categories', category);
       }
 
       function getAllCategoriesFor(whiteboard) {
@@ -129,10 +143,10 @@
 
       function postDummyData() {
         for (var i = 0; i < dummyData.categories.length; i = i + 1) {
-          basicPost('testwhiteboard', 'categories', dummyData.categories[i]);
+          createCategory('testwhiteboard', dummyData.categories[i]);
         }
         for (var j = 0; j < dummyData.postits.length; j = j + 1) {
-          basicPost('testwhiteboard', 'postits', dummyData.postits[j]);
+          createPostit('testwhiteboard', dummyData.postits[j]);
         }
       }
       var dummyDataCategories = [{
@@ -193,6 +207,8 @@
         getUrl: function () {
           return baseUrl;
         },
+        createPostit: createPostit,
+        createCategory: createCategory,
         updatePostit: updatePostit,
         updateCategory: updateCategory,
         deletePostit: deletePostit,

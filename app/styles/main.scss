@@ -1,3 +1,8 @@
+body {
+    font-size:18px;
+  border:1px solid #E8E8E8;
+}
+
 .frame {
 	display: flex;
 	margin-top: 10px;
@@ -11,27 +16,27 @@
 }
 .menu {
 	opacity:0;
-	display: inline-block; 
+	display: inline-block;
 	background-color: transparent;
 }
 
 fp-postit:hover .menu{
-	opacity: 1; 
+	opacity: 1;
 }
 
 .glyphicon{
-	display: inline-block; 	
+	display: inline-block;
 }
 .postit {
 	padding: 10px;
-	padding-top: 0px; 
+	padding-top: 0px;
 	margin-bottom: 15px;
 	background-color: #FFFE78;
-	
+
 	/* With help from: http://mentormate.com/blog/css-postit-note/*/
-	font-size:18px;      
-	border:1px solid #E8E8E8;  
-	border-bottom-right-radius: 60px 5px; 
+	font-size:18px;
+	border:1px solid #E8E8E8;
+	border-bottom-right-radius: 60px 5px;
 	background: rgb(255,255,136); /* Old browsers */
 	background: -moz-linear-gradient(-45deg, rgba(255,255,136,1) 77%, rgba(255,255,214,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(77%,rgba(255,255,136,1)), color-stop(100%,rgba(255,255,214,1))); /* Chrome,Safari4+ */
@@ -95,11 +100,11 @@ fp-whiteboard>div {
 .hints {
 	width: 100%;
 }
-.tools {
-	width: 190px;
-	position: absolute;
-	top: 76px;
-	left: 71px;
+.tools-img {
+  width: 190px;
+  position: absolute;
+  top: 76px;
+  left: 71px;
 }
 .postit-click-area {
 	position: absolute;
