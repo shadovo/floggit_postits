@@ -1,3 +1,8 @@
+body {
+    font-size:18px;
+  border:1px solid #E8E8E8;
+}
+
 .frame {
 	display: flex;
 	margin-top: 10px;
@@ -61,7 +66,6 @@ textarea {
 	border: none;
 	background-color: transparent;
 	font-family: Arial, Helvetica, sans-serif;
-
 }
 
 fp-whiteboard {
@@ -83,7 +87,7 @@ fp-whiteboard>div {
 .hints {
   width: 100%;
 }
-.tools {
+.tools-img {
   width: 190px;
   position: absolute;
   top: 76px;
