@@ -17,16 +17,16 @@ angular.module('floggitPostitsApp')
       controller: function ($scope, dataStorage) {
 
         $scope.categories = [];
-        var promise = dataStorage.getAllCategoriesFor('testwhiteboard');
-        promise.then(function (data) {
-          $scope.categories = data;
+        dataStorage.getAllCategoriesFor('testwhiteboard')
+          .then(function (data) {
+            $scope.categories = data;
 
-          for (var i = 0; i < $scope.categories.length; i++) {
-            if ($scope.categories[i].id === $scope.postit.category) {
-              $scope.newCategory = $scope.categories[i];
+            for (var i = 0; i < $scope.categories.length; i++) {
+              if ($scope.categories[i].id === $scope.postit.category) {
+                $scope.newCategory = $scope.categories[i];
+              }
             }
-          }
-        });
+          });
 
         $scope.$watch('newCategory', function () {
           $scope.updatePostitCategory();
