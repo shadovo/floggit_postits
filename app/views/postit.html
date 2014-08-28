@@ -1,10 +1,10 @@
-<div class="postit">
+<div class="{{postit.color}}">
 	<input class="postit-title" ng-model="postit.title" ng-blur="updatePost()"/>
 	<br>
 	<textarea rows="3" ng-model="postit.description" ng-blur="updatePost()"></textarea>
 	<br>
 	<div class="menu">
-		<select ng-model="newColor" ng-options="color for color in colors">
+		<select class="menu" ng-model="newColor" ng-options="color for color in colors">
 		</select>
 		<select class="menu" ng-model="newCategory" ng-options="category.name for category in categories">
 		</select>
