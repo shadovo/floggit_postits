@@ -3,13 +3,23 @@
   <img class="tools-img" src="images/toolbar5002.png"/>
   <div class="toolbar-postit" ng-class="{bigPostit: showBigPostit}">
     <img class="toolbar-postit"  src="images/postit.png"/>
-    <div class="tools">
-      <input class="input-title postit-title" placeholder="Title"/>
-      <textarea rows="3" placeholder="Description"></textarea>
-    </div>
+    <form ng-submit="savePostit()" class="tools">
+      <input tabindex="1" ng-model="newPostit.title" class="input-title postit-title" placeholder="Title"/>
+      <textarea tabindex="1" ng-model="newPostit.description" rows="3" placeholder="Description"></textarea>
+      <select tabindex="1" name="color" class="menu" ng-model="newPostit.color" ng-options="color for color in colors">
+      </select>
+      <select tabindex="1" name="category" ng-required class="menu" ng-model="newPostit.category" ng-class="{categorySelectionError: showCategorySelectionError}" ng-options="category.name for category in categories">
+        <option value="">-- category --</option>
+      </select>
+      <br>
+      <span class="button-bar">
+        <button tabindex="2" class="button" type="button" ng-click="resetForm()"><span class="glyphicon glyphicon-remove"></span></button>
+        <button tabindex="1" class="button" type="submit"><span class="glyphicon glyphicon-ok"></span></button>
+      </span>
+    </form>
   </div>
 
-  <span ng-click="showBigPostit = !showBigPostit" class="postit-click-area"></span>
+  <span ng-click="showBigPostit = !showBigPostit" ng-hide="showBigPostit" class="postit-click-area"></span>
   <span ng-click="test('newCategory')" class="category-click-area"></span>
 </div>
 <style>
@@ -30,30 +40,48 @@
   /*background: red;*/
 }
 .tools {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  transition: opacity 330ms;
+  padding: 15px 20px 20px 15px;
+  transition: opacity 200ms cubic-bezier(0,.99,.09,.99);
   opacity: 0;
   width: 100%;
   height: 100%;
-  /*background:blue;*/
 }
 .bigPostit {
-  /*background: red;*/
   width: 300px;
   height: 300px;
 }
 .bigPostit .tools {
   opacity: 1;
+  transition: opacity 330ms cubic-bezier(1,.01,1,.43);
 }
-.tools>*{
-  margin-top: 20px;
-  margin-left: 20px;
-  height: 44px;
-  width: 90%;
-  padding-right: 10px;
-  /*background: green;*/
+.tools *{
+  opacity: 1;
+  max-width: 100%;
 }
-
+.tools .menu {
+  font-family:"Gloria Hallelujah", Arial, Helvetica, sans-serif;
+  bottom: 0;
+  max-width: 160px;
+}
+.tools .button-bar {
+  width: 100%;
+  text-align: center;
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  margin-left: -15px;
+}
+.tools .button {
+  font-size: 30px;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 5px 30px 5px 30px;
+}
+.tools .categorySelectionError {
+  border: 1px solid red;
+}
 </style>

@@ -14,42 +14,55 @@ angular.module('floggitPostitsApp')
       scope: {
         postit: '='
       },
-      controller: function ($scope, dataStorage) {
+      controller: function ($scope, $route, dataStorage, currentWhiteboard) {
 
-        $scope.categories = [];
-        dataStorage.getAllCategoriesFor('testwhiteboard')
-          .then(function (data) {
-            $scope.categories = data;
+        $scope.categories = currentWhiteboard.getCategories();
 
-            for (var i = 0; i < $scope.categories.length; i++) {
-              if ($scope.categories[i].id === $scope.postit.category) {
-                $scope.newCategory = $scope.categories[i];
-              }
+        $scope.colors = currentWhiteboard.getColors();
+
+        $scope.$watch(currentWhiteboard.getCategories, function () {
+          for (var i = 0; i < $scope.categories.length; i++) {
+            if ($scope.categories[i].id === $scope.postit.category) {
+              $scope.newCategory = $scope.categories[i];
             }
-          });
-
-        $scope.$watch('newCategory', function () {
-          $scope.updatePostitCategory();
+          }
+          $scope.newColor = $scope.postit.color;
         });
 
         var title = $scope.postit.title;
         var description = $scope.postit.description;
         var category = $scope.postit.category;
         var color = $scope.postit.color;
+        $scope.newColor = color;
 
-        $scope.updatePostitCategory = function () {
-          console.log($scope.newCategory);
-          if ($scope.newCategory !== undefined && $scope.newCategory.id !== category) {
-            $scope.postit.category = $scope.newCategory.id;
-            dataStorage.updatePostit('testwhiteboard', $scope.postit);
-            category = $scope.postit.category;
-            console.log(category);
+        $scope.$watch('newCategory', function () {
+          updatePostitCategory();
+        });
+
+        $scope.$watch('newColor', function () {
+          updatePostitColor();
+        });
+
+        var updatePostitColor = function () {
+          if ($scope.newColor !== undefined && $scope.newColor !== color) {
+            $scope.postit.color = $scope.newColor;
+            color = $scope.newColor;
+            dataStorage.updatePostit(currentWhiteboard.getName(), $scope.postit);
           }
         };
 
-        $scope.updatePost = function () {
+        var updatePostitCategory = function () {
+          if ($scope.newCategory !== undefined && $scope.newCategory.id !== category) {
+            $scope.postit.category = $scope.newCategory.id;
+            dataStorage.updatePostit(currentWhiteboard.getName(), $scope.postit).then(function () {
+              category = $scope.postit.category;
+            });
+          }
+        };
+
+        $scope.updatePostit = function () {
           if ($scope.postit.title !== title || $scope.postit.description !== description) {
-            dataStorage.updatePostit('testwhiteboard', $scope.postit);
+            dataStorage.updatePostit(currentWhiteboard.getName(), $scope.postit);
             title = $scope.postit.title;
             description = $scope.postit.description;
           }
@@ -57,8 +70,9 @@ angular.module('floggitPostitsApp')
         $scope.deletePostit = function () {
           var answer = confirm('Are you sure that you want to delete this postit?');
           if (answer === true) {
-            console.log('ID: ' + $scope.postit.id);
-            dataStorage.deletePostit('testwhiteboard', $scope.postit.id);
+            dataStorage.deletePostit(currentWhiteboard.getName(), $scope.postit.id).then(function () {}).then(function () {
+              $route.reload();
+            });
           }
         };
       }

@@ -14,12 +14,19 @@ angular.module('floggitPostitsApp')
       scope: {
         name: '='
       },
-      controller: function ($scope, dataStorage) {
-        $scope.url = dataStorage.getUrl();
-        var allPromise = dataStorage.getAll($scope.name);
-        allPromise.then(function (data) {
-          $scope.categories = data;
-        });
+      controller: function ($scope, dataStorage, currentWhiteboard) {
+        currentWhiteboard.setName($scope.name);
+
+        function getAllData() {
+          dataStorage.getAll($scope.name)
+            .then(function (data) {
+              currentWhiteboard.setCategories(data);
+              $scope.categories = currentWhiteboard.getCategories();
+            });
+        }
+        getAllData();
+
+        $scope.$on('dataUpdated', getAllData);
       }
     };
   });
