@@ -4,7 +4,7 @@
 	<textarea rows="3" ng-model="postit.description" ng-blur="updatePostit()"></textarea>
 	<br>
 	<div class="menubar">
-		<select class="menu" ng-model="newColor" ng-options="color for color in colors">
+		<select class="menu" ng-model="newColor" ng-options="color as (color | titlecase) for color in colors ">
 		</select>
 		<select class="menu" ng-model="newCategory" ng-options="category.name for category in categories">
 		</select>
