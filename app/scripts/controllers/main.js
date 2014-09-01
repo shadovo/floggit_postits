@@ -8,10 +8,4 @@
  * Controller of the floggitPostitsApp
  */
 angular.module('floggitPostitsApp')
-	.controller('MainCtrl', function ($scope) {
-		$scope.awesomeThings = [
-			'HTML5 Boilerplate',
-			'AngularJS',
-			'Karma'
-		];
-	});
+  .controller('MainCtrl', function () {});
