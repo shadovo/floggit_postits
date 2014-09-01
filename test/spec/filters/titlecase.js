@@ -5,7 +5,6 @@ describe('Filter: titlecase', function () {
   // load the filter's module
   // beforeEach(module('floggitPostitsApp'));
 
-
   // initialize a new instance of the filter before each test
   // var titlecase;
   // beforeEach(inject(function ($filter) {
