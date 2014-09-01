@@ -47,6 +47,9 @@ angular.module('floggitPostitsApp')
             });
           }
         };
+        $scope.createCategory = function () {
+          dataStorage.createCategory(currentWhiteboard.getName());
+        };
       }
     };
   });

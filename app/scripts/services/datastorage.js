@@ -80,11 +80,13 @@
         return basicPost(whiteboard, 'postits', postit);
       }
 
-      function createCategory(whiteboard, category) {
-        if (category.name === undefined || category.name === '') {
-          category.name = 'New Category';
+      function createCategory(whiteboard, categoryName) {
+        if (categoryName === undefined || categoryName === '') {
+          categoryName = 'New Category';
         }
-        return basicPost(whiteboard, 'categories', category);
+        return basicPost(whiteboard, 'categories', {
+          name: categoryName
+        });
       }
 
       function getAllCategoriesFor(whiteboard) {
@@ -143,67 +145,67 @@
           });
       }
 
-  // function postDummyData() {
-  //   for (var i = 0; i < dummyData.categories.length; i = i + 1) {
-  //     createCategory('testwhiteboard', dummyData.categories[i]);
-  //   }
-  //   for (var j = 0; j < dummyData.postits.length; j = j + 1) {
-  //     createPostit('testwhiteboard', dummyData.postits[j]);
-  //   }
-  // }
-  // var dummyDataCategories = [{
-  //   'name': 'Todo',
-  //   'id': 1
-  // }, {
-  //   'name': 'In progress',
-  //   'id': 2
-  // }, {
-  //   'name': 'Done',
-  //   'id': 3
-  // }];
+      // function postDummyData() {
+      //   for (var i = 0; i < dummyData.categories.length; i = i + 1) {
+      //     createCategory('testwhiteboard', dummyData.categories[i]);
+      //   }
+      //   for (var j = 0; j < dummyData.postits.length; j = j + 1) {
+      //     createPostit('testwhiteboard', dummyData.postits[j]);
+      //   }
+      // }
+      // var dummyDataCategories = [{
+      //   'name': 'Todo',
+      //   'id': 1
+      // }, {
+      //   'name': 'In progress',
+      //   'id': 2
+      // }, {
+      //   'name': 'Done',
+      //   'id': 3
+      // }];
 
-  // var dummyDataPostits = [{
-  //   'title': 'Some good deed.',
-  //   'description': 'I am ver good deed that must be done!',
-  //   'color': 'red',
-  //   'category': 1
-  // }, {
-  //   'title': 'Some bad deed.',
-  //   'description': 'I am ver bad deed that must be done!',
-  //   'color': 'blue',
-  //   'category': 1
-  // }, {
-  //   'title': 'Get angry over shit .',
-  //   'description': 'I very important stuff!',
-  //   'color': 'red',
-  //   'category': 1
-  // }, {
-  //   'title': 'Under progress',
-  //   'description': 'I huiehriueh must be done!',
-  //   'color': 'green',
-  //   'category': 2
-  // }, {
-  //   'title': 'Almost done.',
-  //   'description': 'I am ver bad deed that must be done!',
-  //   'color': 'yellow',
-  //   'category': 2
-  // }, {
-  //   'title': 'Done!!',
-  //   'description': 'I huiehriueh must be done be done!',
-  //   'color': 'green',
-  //   'category': 3
-  // }, {
-  //   'title': 'Done Again',
-  //   'description': 'I anojoijojioj jjj must be done!',
-  //   'color': 'blue',
-  //   'category': 3
-  // }];
+      // var dummyDataPostits = [{
+      //   'title': 'Some good deed.',
+      //   'description': 'I am ver good deed that must be done!',
+      //   'color': 'red',
+      //   'category': 1
+      // }, {
+      //   'title': 'Some bad deed.',
+      //   'description': 'I am ver bad deed that must be done!',
+      //   'color': 'blue',
+      //   'category': 1
+      // }, {
+      //   'title': 'Get angry over shit .',
+      //   'description': 'I very important stuff!',
+      //   'color': 'red',
+      //   'category': 1
+      // }, {
+      //   'title': 'Under progress',
+      //   'description': 'I huiehriueh must be done!',
+      //   'color': 'green',
+      //   'category': 2
+      // }, {
+      //   'title': 'Almost done.',
+      //   'description': 'I am ver bad deed that must be done!',
+      //   'color': 'yellow',
+      //   'category': 2
+      // }, {
+      //   'title': 'Done!!',
+      //   'description': 'I huiehriueh must be done be done!',
+      //   'color': 'green',
+      //   'category': 3
+      // }, {
+      //   'title': 'Done Again',
+      //   'description': 'I anojoijojioj jjj must be done!',
+      //   'color': 'blue',
+      //   'category': 3
+      // }];
 
 
-  // var dummyData = {};
-  // dummyData.categories = dummyDataCategories;
-  // dummyData.postits = dummyDataPostits;
-  // postDummyData();
+      // var dummyData = {};
+      // dummyData.categories = dummyDataCategories;
+      // dummyData.postits = dummyDataPostits;
+      // postDummyData();
 
       return {
         getUrl: function () {
