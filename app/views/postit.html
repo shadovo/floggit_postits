@@ -1,14 +1,13 @@
 <div class="{{postit.color}}">
-	<input class="postit-title" ng-model="postit.title" ng-blur="updatePost()"/>
+	<input class="postit-title" ng-model="postit.title" ng-blur="updatePostit()"/>
 	<br>
-	<textarea rows="3" ng-model="postit.description" ng-blur="updatePost()"></textarea>
+	<textarea rows="3" ng-model="postit.description" ng-blur="updatePostit()"></textarea>
 	<br>
-	<div class="menu">
+	<div class="menubar">
 		<select class="menu" ng-model="newColor" ng-options="color for color in colors">
 		</select>
 		<select class="menu" ng-model="newCategory" ng-options="category.name for category in categories">
 		</select>
-		
 		<span class="glyphicon glyphicon-remove" ng-click="confirm(deletePostit())"></span>
 	</div>
 </div>
