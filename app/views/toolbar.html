@@ -6,7 +6,7 @@
     <form ng-submit="savePostit()" class="tools">
       <input tabindex="1" ng-model="newPostit.title" class="input-title postit-title" placeholder="Title"/>
       <textarea tabindex="1" ng-model="newPostit.description" rows="3" placeholder="Description"></textarea>
-      <select tabindex="1" name="color" class="menu" ng-model="newPostit.color" ng-options="color for color in colors">
+      <select tabindex="1" name="color" class="menu" ng-model="newPostit.color" ng-options="color as (color | titlecase) for color in colors">
       </select>
       <select tabindex="1" name="category" ng-required class="menu" ng-model="newPostit.category" ng-class="{categorySelectionError: showCategorySelectionError}" ng-options="category.name for category in categories">
         <option value="">-- category --</option>
