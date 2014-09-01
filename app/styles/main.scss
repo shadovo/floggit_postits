@@ -1,16 +1,16 @@
 body {
-  font-size:18px;
-  border:1px solid #E8E8E8;
-  background-image: url('../images/whiteboard1.jpg');
-  position: fixed;
-  width: 100%;
+	font-size:18px;
+	border:1px solid #E8E8E8;
+	background-image: url('../images/whiteboard1.jpg');
+	position: fixed;
+	width: 100%;
 }
 
 
 html, body, .view {
-  border:none;
-  height: 100%;
-  position:relative;
+	border:none;
+	height: 100%;
+	position:relative;
 }
 
 
@@ -25,21 +25,31 @@ html, body, .view {
 	-webkit-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
 	-moz-box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
 	box-shadow: 3px 1px 68px 4px rgba(59,59,59,1);
-  height: 100%;
-  overflow: scroll;
+	height: 100%;
+	overflow: scroll;
 }
 
 .menubar {
-  opacity:0;
+	opacity:0;
 }
 
 .menubar, .menu {
-  max-width: 100%;
-  display: inline-block;
-  background-color: transparent;
+	max-width: 100%;
+	display: inline-block;
+	background-color: transparent;
 }
 
 fp-postit:hover .menubar{
+	opacity: 1;
+}
+
+#delete-category {
+	max-width: 50%;
+	display: inline-block;
+	opacity: 0;
+}
+
+fp-category:hover #delete-category{
 	opacity: 1;
 }
 
@@ -132,7 +142,7 @@ fp-postit:hover .menubar{
 }
 
 .postit-title{
-  max-width: 100%;
+	max-width: 100%;
 	font-size: 25px;
 	font-family:"Gloria Hallelujah", Arial, Helvetica, sans-serif;
 }
@@ -150,6 +160,7 @@ input {
 	padding-left: 10px;
 	border: none;
 	background-color: transparent;
+	max-width: 90%; 
 }
 textarea {
 	color: #000000;
@@ -183,10 +194,10 @@ fp-whiteboard>div {
 	width: 100%;
 }
 .tools-img {
-  width: 190px;
-  position: absolute;
-  top: 76px;
-  left: 71px;
+	width: 190px;
+	position: absolute;
+	top: 76px;
+	left: 71px;
 }
 .postit-click-area {
 	position: absolute;
@@ -207,5 +218,5 @@ fp-whiteboard>div {
 	display: block;
 }
 iframe, #feedly-mini {
-  display: none !important;
+	display: none !important;
 }

@@ -1,6 +1,7 @@
 <div class="category">
-	<input ng-model="category.name" ng-blur="updateCategoryName()" ng-mouseover=""/>
+	<input ng-model="category.name" ng-blur="updateCategoryName()"/><span id="delete-category" class="glyphicon glyphicon-remove" ng-click="confirm(deleteCategory())"></span>
 	<br>
+	
 	<div ng-repeat="postit in category.postits track by $index">
 		<fp-postit postit="postit"></fp-postit>
 	</div>
