@@ -28,14 +28,11 @@ angular.module('floggitPostitsApp')
         $scope.deleteCategory = function () {
           var answer = confirm('Are you sure about deleting this category with its postits?');
           if (answer === true) {
-            console.log('ping');
             if (category.postits) {
               for (var i = 0; i < category.postits.length; i = i + 1) {
                 dataStorage.deletePostit(currentWhiteboard.getName(), category.postits[i].id);
-                console.log('pang');
               }
             }
-            console.log($scope.category.id);
             dataStorage.deleteCategory(currentWhiteboard.getName(), $scope.category.id);
           }
         };
