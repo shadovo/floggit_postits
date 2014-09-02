@@ -12,11 +12,12 @@
 
       // var baseUrl = 'http://api.beta2.se/fp-';
       var baseUrl = 'http://localhost:14782/fp-';
-      // method, whiteboard, type, data, id
+
+      /*
+       * options should include method, whiteboard, type
+       * options could include  id, data
+       */
       function basicRequest(options) {
-        /*
-         * options include method, whiteboard, type, id, data
-         */
         var deferred = $q.defer();
         var url = baseUrl + options.whiteboard + '-' + options.type;
 
@@ -145,68 +146,6 @@
           });
       }
 
-      // function postDummyData() {
-      //   for (var i = 0; i < dummyData.categories.length; i = i + 1) {
-      //     createCategory('testwhiteboard', dummyData.categories[i]);
-      //   }
-      //   for (var j = 0; j < dummyData.postits.length; j = j + 1) {
-      //     createPostit('testwhiteboard', dummyData.postits[j]);
-      //   }
-      // }
-      // var dummyDataCategories = [{
-      //   'name': 'Todo',
-      //   'id': 1
-      // }, {
-      //   'name': 'In progress',
-      //   'id': 2
-      // }, {
-      //   'name': 'Done',
-      //   'id': 3
-      // }];
-
-      // var dummyDataPostits = [{
-      //   'title': 'Some good deed.',
-      //   'description': 'I am ver good deed that must be done!',
-      //   'color': 'red',
-      //   'category': 1
-      // }, {
-      //   'title': 'Some bad deed.',
-      //   'description': 'I am ver bad deed that must be done!',
-      //   'color': 'blue',
-      //   'category': 1
-      // }, {
-      //   'title': 'Get angry over shit .',
-      //   'description': 'I very important stuff!',
-      //   'color': 'red',
-      //   'category': 1
-      // }, {
-      //   'title': 'Under progress',
-      //   'description': 'I huiehriueh must be done!',
-      //   'color': 'green',
-      //   'category': 2
-      // }, {
-      //   'title': 'Almost done.',
-      //   'description': 'I am ver bad deed that must be done!',
-      //   'color': 'yellow',
-      //   'category': 2
-      // }, {
-      //   'title': 'Done!!',
-      //   'description': 'I huiehriueh must be done be done!',
-      //   'color': 'green',
-      //   'category': 3
-      // }, {
-      //   'title': 'Done Again',
-      //   'description': 'I anojoijojioj jjj must be done!',
-      //   'color': 'blue',
-      //   'category': 3
-      // }];
-
-
-      // var dummyData = {};
-      // dummyData.categories = dummyDataCategories;
-      // dummyData.postits = dummyDataPostits;
-      // postDummyData();
-
       return {
         getUrl: function () {
           return baseUrl;
@@ -222,19 +161,3 @@
         getAll: getAll
       };
     });
-
-
-
-  // var deferred = $q.defer();
-  // var categoryPromise = getAllCategoriesFor(whiteboard);
-  // var postitsPromise, i;
-  // categoryPromise.then(function (categories) {
-  //   postitsPromise = getAllPostitsFor(whiteboard);
-  //   postitsPromise.then(function (postits) {
-  //     for (i = 0; i < postits.length; i = i + 1) {
-  //       addPostitToCorrespondingCategory(categories, postits[i]);
-  //     }
-  // });
-  // deferred.resolve(categories);
-  // });
-  // return deferred.promise;
