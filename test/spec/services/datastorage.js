@@ -121,7 +121,6 @@ describe('Service: dataStorage', function () {
       returnedPromise = dataStorage.createPostit('testwhiteboard', sendData),
       result;
     returnData.id = 4;
-
     httpBackend.expect('POST', postitsUrl, sendData).respond(200, returnData);
 
     returnedPromise.then(function (response) {
@@ -131,14 +130,19 @@ describe('Service: dataStorage', function () {
     expect(result).toEqual(returnData);
   });
 
-  it('should delete postits from the server', function () {
-    var returnData = {
-        'deleted': true
+  it('should send new category to the server with specified name', function () {
+    var sendData = 'my category',
+      expectedServerData = {
+        'name': 'my category'
       },
-      returnedPromise = dataStorage.deletePostit('testwhiteboard', 1),
-      result,
-      postitUrl = postitsUrl + '/1';
-    httpBackend.expect('DELETE', postitUrl).respond(200, returnData);
+      returnData = {
+        'name': 'my category',
+        'id': 3
+      },
+      returnedPromise = dataStorage.createCategory('testwhiteboard', sendData),
+      result;
+    returnData.id = 4;
+    httpBackend.expect('POST', categoriesUrl, expectedServerData).respond(200, returnData);
 
     returnedPromise.then(function (response) {
       result = response;
@@ -147,4 +151,113 @@ describe('Service: dataStorage', function () {
     expect(result).toEqual(returnData);
   });
 
+  it('should send new category to the server with default name if not specified', function () {
+    var expectedServerData = {
+        'name': 'New Category'
+      },
+      returnData = {
+        'name': 'New Category',
+        'id': 3
+      },
+      returnedPromise = dataStorage.createCategory('testwhiteboard'),
+      result;
+    returnData.id = 4;
+    httpBackend.expect('POST', categoriesUrl, expectedServerData).respond(200, returnData);
+
+    returnedPromise.then(function (response) {
+      result = response;
+    });
+    httpBackend.flush();
+    expect(result).toEqual(returnData);
+  });
+
+  it('should update a postit based on id', function () {
+    var sendData = {
+        'title': 'Updated 1st postit',
+        'description': 'This postit was updated',
+        'category': 1,
+        'color': 'green',
+        'id': 1
+      },
+      returnData = {
+        'updated': true
+      },
+      returnedPromise = dataStorage.updatePostit('testwhiteboard', sendData),
+      result,
+      postitUrl = postitsUrl + '/1';
+    httpBackend.expect('PUT', postitUrl, sendData).respond(200, returnData);
+
+    returnedPromise.then(function (response) {
+      result = response;
+    });
+    httpBackend.flush();
+    expect(result).toEqual(returnData);
+  });
+
+  it('should update a category based on id', function () {
+    var sendData = {
+        'name': 'Updated category name!',
+        'id': 1,
+        'postits': [{
+          'title': 'Postit 1',
+          'description': 'This is the first postit',
+          'category': 1,
+          'color': 'green',
+          'id': 1
+        }, {
+          'title': 'Postit 2',
+          'description': '2nd postit',
+          'category': 1,
+          'color': 'green',
+          'id': 2
+        }]
+      },
+      expectedServerData = {
+        'name': 'Updated category name!',
+        'id': 1
+      },
+      returnData = {
+        'updated': true
+      },
+      returnedPromise = dataStorage.updateCategory('testwhiteboard', sendData),
+      result,
+      categoryUrl = categoriesUrl + '/' + sendData.id;
+    httpBackend.expect('PUT', categoryUrl, expectedServerData).respond(200, returnData);
+
+    returnedPromise.then(function (response) {
+      result = response;
+    });
+    httpBackend.flush();
+    expect(result).toEqual(returnData);
+  });
+
+  it('should delete a postit based on id from the server', function () {
+    var returnData = {
+        'deleted': true
+      },
+      returnedPromise = dataStorage.deletePostit('testwhiteboard', 1),
+      result,
+      postitUrl = postitsUrl + '/1';
+    httpBackend.expect('DELETE', postitUrl).respond(200, returnData);
+    returnedPromise.then(function (response) {
+      result = response;
+    });
+    httpBackend.flush();
+    expect(result).toEqual(returnData);
+  });
+  it('should delete a category based on id from the server', function () {
+    var returnData = {
+        'deleted': true
+      },
+      returnedPromise = dataStorage.deleteCategory('testwhiteboard', 1),
+      result,
+      categoryUrl = categoriesUrl + '/1';
+    httpBackend.expect('DELETE', categoryUrl).respond(200, returnData);
+
+    returnedPromise.then(function (response) {
+      result = response;
+    });
+    httpBackend.flush();
+    expect(result).toEqual(returnData);
+  });
 });
