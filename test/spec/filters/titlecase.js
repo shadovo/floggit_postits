@@ -2,17 +2,16 @@
 
 describe('Filter: titlecase', function () {
 
-  // load the filter's module
-  // beforeEach(module('floggitPostitsApp'));
+  beforeEach(angular.mock.module('floggitPostitsApp'));
+  it('should convert words seperated by a space to titlecase', function () {
+    angular.mock.inject(function (titlecaseFilter) {
+      expect(titlecaseFilter('HeLLo wOrld fROM Tom')).toEqual('Hello World From Tom');
+    });
+  });
 
-  // initialize a new instance of the filter before each test
-  // var titlecase;
-  // beforeEach(inject(function ($filter) {
-  //   titlecase = $filter('titlecase');
-  // }));
-
-  // it('should return the input prefixed with "titlecase filter:"', function () {
-  //   var text = 'angularjs';
-  //   expect(titlecase(text)).toBe('titlecase filter: ' + text);
-  // });
+  it('should convert words seperated by a hyphen to titlecase', function () {
+    angular.mock.inject(function (titlecaseFilter) {
+      expect(titlecaseFilter('mary-lo')).toEqual('Mary-Lo');
+    });
+  });
 });
