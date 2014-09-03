@@ -3,7 +3,7 @@
 describe('Directive: fpCustomFunctionality', function () {
 
   // load the directive's module
-  beforeEach(module('floggitPostitsApp'));
+  // beforeEach(module('floggitPostitsApp'));
 
   // var element,
   //   scope;

@@ -147,9 +147,6 @@
       }
 
       return {
-        getUrl: function () {
-          return baseUrl;
-        },
         createPostit: createPostit,
         createCategory: createCategory,
         updatePostit: updatePostit,
