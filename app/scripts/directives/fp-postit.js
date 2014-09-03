@@ -20,7 +20,8 @@ angular.module('floggitPostitsApp')
 
         $scope.colors = currentWhiteboard.getColors();
 
-        $scope.$watch(currentWhiteboard.getCategories, function () {
+        $scope.$watch(currentWhiteboard.getCategories, function (newValue) {
+          $scope.categories = newValue;
           for (var i = 0; i < $scope.categories.length; i++) {
             if ($scope.categories[i].id === $scope.postit.category) {
               $scope.newCategory = $scope.categories[i];
