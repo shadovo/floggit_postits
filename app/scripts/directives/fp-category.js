@@ -9,7 +9,7 @@
 angular.module('floggitPostitsApp')
   .directive('fpCategory', function () {
     return {
-      templateUrl: 'views/category.html',
+    templateUrl: 'views/categoryTemplate.html',
       restrict: 'E',
       scope: {
         category: '='

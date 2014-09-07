@@ -21,7 +21,26 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          whiteboards: function (dataStorage) {
+            return dataStorage.getAllWhiteboards().then(function (whiteboards) {
+              return whiteboards;
+            });
+          }
+        }
+      })
+      .when('/board/:name', {
+        templateUrl: 'views/whiteboard.html',
+        controller: 'FpWhiteboardCtrl',
+        resolve: {
+          categories: function ($route, dataStorage) {
+            return dataStorage.getAll($route.current.params.name)
+              .then(function (data) {
+                return data;
+              });
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'

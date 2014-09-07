@@ -7,15 +7,16 @@
  * # whiteboard
  */
 angular.module('floggitPostitsApp')
-  .directive('fpWhiteboard', function () {
+  .directive('fpBoard', function () {
     return {
-      templateUrl: 'views/whiteboard.html',
+      templateUrl: 'views/boardTemplate.html',
       restrict: 'E',
       scope: {
         name: '='
       },
       controller: function ($scope, dataStorage, currentWhiteboard) {
         currentWhiteboard.setName($scope.name);
+        $scope.categories = currentWhiteboard.getCategories();
 
         function getAllData() {
           dataStorage.getAll($scope.name)
@@ -24,8 +25,6 @@ angular.module('floggitPostitsApp')
               $scope.categories = currentWhiteboard.getCategories();
             });
         }
-        getAllData();
-
         $scope.$on('dataUpdated', getAllData);
       }
     };

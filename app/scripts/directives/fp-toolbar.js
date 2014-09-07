@@ -9,7 +9,7 @@
 angular.module('floggitPostitsApp')
   .directive('fpToolbar', function () {
     return {
-      templateUrl: 'views/toolbar.html',
+      templateUrl: 'views/toolbarTemplate.html',
       restrict: 'E',
       controller: function ($scope, dataStorage, currentWhiteboard) {
         $scope.colors = currentWhiteboard.getColors();

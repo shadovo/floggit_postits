@@ -19,8 +19,11 @@
        */
       function basicRequest(options) {
         var deferred = $q.defer();
-        var url = baseUrl + options.whiteboard + '-' + options.type;
-
+        var url = baseUrl;
+        if (options.whiteboard) {
+          url = url + options.whiteboard + '-';
+        }
+        url = url + options.type;
         var requestParams = {};
         if (options.id !== undefined) {
           url = url + '/' + options.id;
@@ -77,6 +80,10 @@
         });
       }
 
+      function createWhiteboard(newBoard) {
+        return basicPost(undefined, 'whiteboards', newBoard);
+      }
+
       function createPostit(whiteboard, postit) {
         return basicPost(whiteboard, 'postits', postit);
       }
@@ -88,6 +95,10 @@
         return basicPost(whiteboard, 'categories', {
           name: categoryName
         });
+      }
+
+      function getAllWhiteboards() {
+        return basicGet(undefined, 'whiteboards');
       }
 
       function getAllCategoriesFor(whiteboard) {
@@ -148,12 +159,14 @@
 
 
       return {
+        createWhiteboard: createWhiteboard,
         createPostit: createPostit,
         createCategory: createCategory,
         updatePostit: updatePostit,
         updateCategory: updateCategory,
         deletePostit: deletePostit,
         deleteCategory: deleteCategory,
+        getAllWhiteboards: getAllWhiteboards,
         getAllCategoriesFor: getAllCategoriesFor,
         getAllPostitsFor: getAllPostitsFor,
         getAll: getAll

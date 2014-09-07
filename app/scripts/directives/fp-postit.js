@@ -9,7 +9,7 @@
 angular.module('floggitPostitsApp')
   .directive('fpPostit', function () {
     return {
-      templateUrl: 'views/postit.html',
+      templateUrl: 'views/postitTemplate.html',
       restrict: 'E',
       scope: {
         postit: '='
