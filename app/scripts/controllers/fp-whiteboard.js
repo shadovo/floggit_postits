@@ -8,7 +8,9 @@
  * Controller of the floggitPostitsApp
  */
 angular.module('floggitPostitsApp')
-  .controller('FpWhiteboardCtrl', function ($scope, $routeParams, currentWhiteboard, categories) {
-    $scope.whiteboard = $routeParams.name;
-    currentWhiteboard.setCategories(categories);
+  .controller('FpWhiteboardCtrl', function ($routeParams, wsConnection, currentWhiteboard) {
+    var id = parseInt($routeParams.id);
+    if (id !== currentWhiteboard.getId()) {
+      wsConnection.getWhiteboard(id);
+    }
   });

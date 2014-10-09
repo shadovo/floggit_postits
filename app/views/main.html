@@ -22,7 +22,9 @@
     </div>
   </div>
   <ul class="list-group col-md-8">
-    <li class="list-group-item" ng-repeat="whiteboard in whiteboards | filter:searchText" ng-click="goToWhiteboard(whiteboard)">{{ whiteboard.name }}</li>
+    <li class="list-group-item" ng-repeat="whiteboard in whiteboards | filter:searchText" ng-click="loadWhiteboard(whiteboard)">
+      {{ whiteboard.name }}
+    </li>
   </ul>
 
 </div>

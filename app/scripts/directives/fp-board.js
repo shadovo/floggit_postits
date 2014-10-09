@@ -11,21 +11,16 @@ angular.module('floggitPostitsApp')
     return {
       templateUrl: 'views/boardTemplate.html',
       restrict: 'E',
-      scope: {
-        name: '='
-      },
-      controller: function ($scope, dataStorage, currentWhiteboard) {
-        currentWhiteboard.setName($scope.name);
-        $scope.categories = currentWhiteboard.getCategories();
-
-        function getAllData() {
-          dataStorage.getAll($scope.name)
-            .then(function (data) {
-              currentWhiteboard.setCategories(data);
-              $scope.categories = currentWhiteboard.getCategories();
-            });
+      controller: function ($scope, $timeout, currentWhiteboard) {
+        function updateData () {
+          $scope.categories = currentWhiteboard.getCategories();
+          $timeout(function(){
+            $scope.$apply();
+          });
         }
-        $scope.$on('dataUpdated', getAllData);
+        updateData();
+
+        $scope.$on('dataUpdated', updateData);
       }
     };
   });
